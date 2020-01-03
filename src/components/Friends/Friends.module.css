@@ -1,0 +1,133 @@
+.usersAvatar{
+    width: 133px;
+    height: 133px;;
+}
+.selectedPage{
+    font-weight: bold;
+}
+.userContainer{
+   width: 45%;
+   background-color: #fff;
+   margin-bottom: 20px;
+   box-shadow: 0 3px 0px rgba(211,216,224,.15);
+   border: 1px solid #EBEBEB;
+   max-height: 133px;
+   position: relative;
+   display: flex;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    justify-content: space-around;
+}
+.mainContainer{
+    
+}
+.avatar{
+   
+}
+.userInfo{
+    margin-left: 30px;
+    margin-top: 30px;
+    max-width: 140px;
+}
+.userName{
+    font-size: 16px;
+    font-weight: bold;
+    word-break: break-all;
+    max-width: 120px;
+    margin-bottom: 5px;
+}
+.userStatus{
+    font-size: 14px;
+}
+
+.userMenu{
+    position: absolute;
+    top: 35%;
+    right: 30px;
+    background: url(../../img/follow-menu.png) no-repeat ;
+    width: 6px;
+    height: 24px;
+    cursor: pointer;
+}
+.hideMenu{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    background-color: #fff;
+    box-shadow: 0 3px 0px rgba(211,216,224,.15);
+    border: 1px solid #EBEBEB;
+    min-width: 140px;
+    
+    z-index: 100;
+}
+.userMenu:hover .hideMenu{
+    display: block;
+}
+.hideMenu button:hover {
+    background-color: #e4eaf0;
+}
+
+.hideMenu button{
+    
+        /*Reset's every elements apperance*/
+        background: none repeat scroll 0 0 transparent;
+        border: medium none;
+        border-spacing: 0;
+        color: #26589F;
+        font-family: 'PT Sans Narrow',sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.42rem;
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        text-decoration: none;
+        text-indent: 0;
+        display: block;
+        width: 100%;
+        cursor: pointer;
+}
+@media only screen and (max-width: 1200px){
+    .hideMenu{
+     
+        top: 0;
+        left: -140px;
+       
+    }
+}
+@media only screen and (max-width: 790px){
+    .userContainer{
+        width: 90%;
+    }
+  }
+  @media only screen and (max-width: 540px){
+    .usersAvatar{
+        width: 80px;
+        height: 80px;
+    }
+    .userInfo{
+        margin-top: 10px;
+    }
+    .userName{
+        font-size: 13px;
+    }
+    .userStatus{
+        font-size: 11.5px;
+    }
+    .userMenu{
+        right: 10px;
+    }
+    .hideMenu button{
+        font-size: 12px;
+    }
+    .hideMenu{
+        min-width: 90px;
+        top: 0;
+        left: -90px;
+    }
+  }

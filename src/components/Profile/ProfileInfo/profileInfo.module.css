@@ -1,0 +1,84 @@
+.profileInfo{
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+
+
+
+.profileInfoContainer{
+    border-bottom: 2px solid #EBEBEB;
+}
+
+
+.edit{
+    width: 200px;
+    height: 30px;
+    background-color: #e5ebf1;
+    color: #fff; 
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 500;
+    border-radius: 2px;
+    color: #55677d;
+}
+.edit:hover{
+    background-color: #dfe6ed;
+}
+.send{
+    width: 200px;
+    height: 30px;
+    background-color: #3C5A99;
+    color: #fff; 
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+.send:hover{
+    background-color: rgb(55, 94, 177);
+ 
+}
+.followBtn{
+    width: 200px;
+    height: 30px;
+    background-color: #3C5A99;
+    color: #fff; 
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 500;
+    border-radius: 2px;
+}
+
+
+
+@media only screen and (max-width: 790px){
+ 
+    .profileInfo{
+        flex-direction: column;
+    }
+    .profileAvatarContainer{
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 540px){
+ 
+    .profileInfo{
+        flex-direction: column;
+    }
+    .profileAvatarContainer{
+        margin-bottom: 20px;
+    }
+    .edit,
+    .send,
+    .followBtn{
+        width: 120px;
+    }
+}

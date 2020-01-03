@@ -1,0 +1,13 @@
+.name{
+    margin: 0;
+}
+.container{
+    margin-top: 40px;
+}
+@media only screen and (max-width: 590px){
+    .name{
+        font-size: 18px;
+    }
+   
+    
+}
