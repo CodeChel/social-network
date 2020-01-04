@@ -26,7 +26,7 @@ const EmojiPickerForm = ({formName, fieldName, Form, styles, dispatch, ...props}
   
 }
 export const EmojiPickerStatus = ({status, setStatus, styles}) =>{
-    const [emojiPickerMode, setEPMode] = useState(false);
+    const [emojiPickerMode, setEPMode] = useState(false)
 
     const addEmoji = (e) => {
         const sym = e.unified.split('-')
