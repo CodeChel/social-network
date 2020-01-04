@@ -23,9 +23,11 @@ describe('EmojiPickerForm', () => {
     expect(emojiPickerForm.find('div')).toHaveLength(1)
     expect(emojiPickerForm.find('span')).toHaveLength(1)
   })
-  it ('change local state the when click on div method it receives from props ', () => {
+  it ('hide/show picker-component on mouse events ', () => {
 
-    emojiPickerForm.find({role: 'button'}).simulate('click')
-    expect(emojiPickerForm.find('Picker')).to.have.lengthOf(1)
+    emojiPickerForm.find('div').simulate('click')
+    expect(emojiPickerForm.find('Picker')).toHaveLength(1)
+    emojiPickerForm.find('div').simulate('mouseleave')
+    expect(emojiPickerForm.find('Picker')).toHaveLength(0)
   })
 })
