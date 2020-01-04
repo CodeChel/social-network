@@ -1,0 +1,65 @@
+
+input{
+    padding: 6px 12px 8px;
+    
+}
+.error input,
+.error textarea{
+    border: 1px solid red !important;
+}
+.formControl .error span{
+    color: red;
+}
+.error span{
+    position: absolute;
+    font-size: 11px;
+    color: red;
+    bottom: 0;
+}
+textarea[name='postBody']{
+    margin-bottom: 10px !important;  
+}
+.errorLogIn{
+    border: 1px solid red;
+    padding: 5px;
+    color: red;
+    position: absolute;
+}
+.formCustom{
+    position: relative;
+}
+.formCustom textarea{
+    margin-bottom: 20px;
+    outline: 0;
+    background-color: #fff;
+    background-attachment: local;
+    background-repeat: repeat;
+    padding: 10px;
+    resize: none;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+input[name='login'],
+input[name='password']{
+    position: relative;
+    width: 270px;
+    font-size: 14px;
+    height: 35px;
+    border-radius: 3px;
+    border: 1px solid #d3d9de;
+    margin-bottom: 15px;
+}
+.buttonLogin{
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 3px;
+    padding: 7px 16px 8px;
+    margin: 0;
+    background-color: #3C5A99;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    margin-left: auto;
+    display: block;
+}

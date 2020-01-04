@@ -1,0 +1,84 @@
+.container{
+    margin-top: 40px;
+    width: 100%;
+}
+.header{
+    border-bottom: 2px solid #EBEBEB;
+    display: flex;
+    margin-bottom: 20px;
+}
+.aboutMe{
+   font-size: 24px;
+    font-weight: 700;
+}
+.contacts{
+    border-bottom: 2px solid #EBEBEB;
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+.row{
+    display: flex;
+    margin-top: 10px;
+    word-wrap: break-word;
+}
+.rowInfo{
+    max-width: 150px;
+}
+.nameInfo{
+    min-width: 200px;
+}
+.edit{
+    margin-left: 20px;
+    background: url('../../../../img/pencil.png') no-repeat;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+.save{
+    width: 50px;
+    height: 24px;
+    cursor: pointer;
+    background: none repeat scroll 0 0 transparent;
+    background-color: rgb(17, 6, 49);
+    color: #fff;
+    border: medium none;
+    border-spacing: 0;
+    font-family: 'PT Sans Narrow',sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42rem;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    display: block;
+    cursor: pointer;
+    margin-left: 0;
+    margin-top: 10px;
+    text-align: center;
+    vertical-align: middle;
+    padding-bottom: 10px;
+    border-radius: 4px;
+}
+@media only screen and (max-width: 590px){
+    .nameInfo{
+        min-width: auto;
+    }
+    .rowInfo,
+    .nameField{
+        font-size: 14px;
+    }
+    .nameInfo,
+    .aboutMe,
+    .nameInfo,
+    .header{
+        font-size: 18px;
+    }
+    .row{
+        flex-direction: column;
+    }
+    
+}

@@ -1,0 +1,132 @@
+.loginPage{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: #F2F2F5;
+    
+}
+.loginFormContainer{
+    margin:  auto;
+    margin-top: 200px;
+    width: 680px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    border-radius: 4px;
+    background: #fff;
+    padding: 37px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    position: relative;
+    padding-left: 24px;
+    
+    cursor: pointer;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-top: 0px;
+    width: 50%;
+
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  .checkboxText{
+      font-size: 14px;
+  }
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 3px;
+    top: 1px;
+    width: 5px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .wrapperDown{
+      display: flex;
+  }
+  .buttonLogin{
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 3px;
+    padding: 7px 16px 8px;
+    margin: 0;
+    background-color: #3C5A99;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    margin-left: auto;
+    display: block;
+}
+
+input[name='login'],
+input[name='password']{
+    position: relative;
+    width: 270px;
+    font-size: 14px;
+    height: 35px;
+    border-radius: 3px;
+    border: 1px solid #d3d9de;
+    margin-bottom: 15px;
+}
+  @media only screen and (max-width: 890px){
+    .loginFormContainer{
+      margin-top: 100px;
+      width: 80%;
+    }
+    input[name='login'],
+input[name='password']{
+  width: 100%;
+}
+    
+}

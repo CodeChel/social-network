@@ -1,0 +1,50 @@
+.items{
+    height: 110px;
+    padding: 20px;
+    cursor: pointer !important;
+    color: #454545;
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+.items:hover{
+    background-color: #f5f7fa;
+}
+.name{
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    max-width: 140px;
+}
+.message{
+    font-size: 14px;
+}
+.selectedDialog{
+    background-color: #4E69A3;
+    color: #fff;
+}
+.selectedDialog:hover{
+    background-color: #4E69A3;
+}
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.timeLastMessage{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 12.5px;
+    color: rgba(69, 69, 69, .7)
+}
+.selectedDialog .timeLastMessage{
+    color: rgba(255,255,255, .7);
+}
+.yourMessage{
+    color:#4E69A3;
+}
+.selectedDialog .yourMessage{
+    color: #fff;
+}
