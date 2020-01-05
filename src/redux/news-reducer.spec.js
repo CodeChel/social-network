@@ -21,9 +21,9 @@ const initialState = {
     isFetching: false
 }
 
-describe('Auth app reducer', () => {
+describe('News app reducer', () => {
 
-    it('SET_USER set data in state', () => {
+    it('SET_NEWS set data in state', () => {
         const news = [1,2,3]
         const action = {
             type: newsR.SET_NEWS,
@@ -34,7 +34,7 @@ describe('Auth app reducer', () => {
 
         expect(newsR.newsReducer(initialState, action)).toEqual({
             ...initialState,
-            ...news
+            newsItems: news
         })
     })
 
@@ -56,7 +56,7 @@ describe('news actions', () => {
         }
 
 
-        expect(newsR.setUserAuth(news)).toEqual(expectedAction)
+        expect(newsR.setNews(news)).toEqual(expectedAction)
 
     })
     it('setNewsCounter action creater should create a correct action', () => {
@@ -82,7 +82,7 @@ describe('news actions', () => {
         }
 
 
-        expect(newsR.setNewsCounter(isFetching)).toEqual(expectedAction)
+        expect(newsR.toggleFetching(isFetching)).toEqual(expectedAction)
 
     })
    
@@ -110,16 +110,24 @@ describe('news async actions ', () => {
 
         const expectedActions = [
             {
+                type: newsR.SET_FETCHING,
+                payload: {isFetching: true}
+            },
+            {
                 type: newsR.SET_NEWS,
-                payload: {...response.data.articles}
+                payload: {news: response.data.articles}
             },
             {
                 type: newsR.SET_COUNTER,
-                payload: { ...response.data.totalResults}
+                payload: {counter: response.data.totalResults}
             },
+            {
+                type: newsR.SET_FETCHING,
+                payload: {isFetching: false}
+            }
         ]
         const storeActions = store.getActions()
-        await store.dispatch(newsR.getAuthThunk())
+        await store.dispatch(newsR.getNewsThunk())
         expect(storeActions).toEqual(expectedActions)
       
     })
