@@ -40,9 +40,9 @@ export const setNews = (news) => ({ type: SET_NEWS, payload: {news} })
 export const setNewsCounter = (counter) => ({ type: SET_COUNTER, payload: {counter} })
 export const toggleFetching = (isFetching) => ({ type: SET_FETCHING, payload: {isFetching}})
 
-export const getNewsThunk = (county='us') => async(dispatch) => {
+export const getNewsThunk = (county='us',page=1) => async(dispatch) => {
     dispatch(toggleFetching(true))
-    const response = await newsAPI.getNews(county)
+    const response = await newsAPI.getNews(county, page)
     if(response.status === 200){
         dispatch(setNews(response.data.articles))
         dispatch(setNewsCounter(response.data.totalResults))
