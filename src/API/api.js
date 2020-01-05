@@ -78,7 +78,7 @@ export const instanceNews = axios.create({
     }
 })
 export const newsAPI = {
-    getNews(country){
-        instanceNews.get(`country=${country}&pageSize=20`).then(res => res)
+    getNews(country, page){
+        instanceNews.get(`country=${country}&pageSize=20&page=${page}`).then(res => res)
     }
 }
