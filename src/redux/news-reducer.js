@@ -1,4 +1,4 @@
-import { newsAPI} from '../API/api';
+import { newsAPI} from '../API/apiNews'
 
 
 
@@ -12,7 +12,7 @@ const initialState = {
     isFetching: false
 }
 
-export const newsReducer = (state = initialState, action) => {
+ const newsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_NEWS:
@@ -40,12 +40,13 @@ export const setNews = (news) => ({ type: SET_NEWS, payload: {news} })
 export const setNewsCounter = (counter) => ({ type: SET_COUNTER, payload: {counter} })
 export const toggleFetching = (isFetching) => ({ type: SET_FETCHING, payload: {isFetching}})
 
-export const getNewsThunk = (county='us',page=1) => async(dispatch) => {
+export const getNewsThunk = (country='us',page=1) => async (dispatch) => {
     dispatch(toggleFetching(true))
-    const response = await newsAPI.getNews(county, page)
+    const response = await newsAPI.getNews(country, page)
     if(response.status === 200){
         dispatch(setNews(response.data.articles))
         dispatch(setNewsCounter(response.data.totalResults))
     }
     dispatch(toggleFetching(false))
 }
+export default newsReducer

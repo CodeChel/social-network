@@ -3,7 +3,6 @@ import './App.css'
 import SideBar from './components/SideBar/SideBar'
 import { withRouter, HashRouter, Route, Redirect } from 'react-router-dom'
 import ProfileContainer from './components/Profile/ProfileContainer'
-import News from './components/News/News'
 import Communities from './components/Communities/Communities'
 import Events from './components/Events/Events'
 import Pages from './components/Pages/Pages'
@@ -18,6 +17,7 @@ import { compose } from 'redux'
 import store from './redux/redux-store'
 import withSuspense from './hoc/withSuspense'
 import { Switch } from 'react-router'
+import NewsContainer from './components/News/NewsContainer'
 
 const MessagesContainer = React.lazy(() => import('./components/Messages-container/MessagesContainer'))
 
@@ -40,7 +40,7 @@ class App extends React.Component {
                   <Route exact path={'/'} render={() => <Redirect to={`/profile/${this.props.authId}`} />} />
                   <Route exact path='/profile' render={() => <Redirect to={`/profile/${this.props.authId}`} />} />
                   <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-                  <Route path='/news' component={News} />
+                  <Route path='/news' component={NewsContainer} />
                   <Route exact path='/messages/:userId?' render={withSuspense(MessagesContainer)} />
                   <Route path='/friends' render={() => <UsersContainer />} />
                   <Route path='/communities' component={Communities} />

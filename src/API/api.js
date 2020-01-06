@@ -70,15 +70,3 @@ export const profileAPI = {
 }
 
 
-
-export const instanceNews = axios.create({
-    baseURL: 'https://newsapi.org/v2/top-headlines?',
-    headers: {
-        'X-Api-Key': '9eeead5842d8437baa80d2864227d069'
-    }
-})
-export const newsAPI = {
-    getNews(country, page){
-        instanceNews.get(`country=${country}&pageSize=20&page=${page}`).then(res => res)
-    }
-}

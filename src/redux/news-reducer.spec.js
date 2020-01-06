@@ -5,7 +5,7 @@ import * as newsR from './news-reducer'
 
 
 
-import { newsAPI } from '../API/api';
+import { newsAPI } from '../API/apiNews';
 
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
