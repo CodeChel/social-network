@@ -7,3 +7,6 @@ export const getNewsCounter = (state) => {
 export const getIsFetching = (state) => {
     return state.news.isFetching
 }
+export const getCurrentPage = (state) => {
+    return state.news.currentPage
+}

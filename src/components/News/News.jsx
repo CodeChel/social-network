@@ -1,16 +1,25 @@
 import React, {useEffect} from 'react'
 import Preloader from '../common/Preloader/Preloader'
 import styles from './News.module.css'
+import Paginator from '../common/Paginator/Paginator'
 
-const News = ({getNewsThunk, newsItems, newsCounter, isFetching}) => {
+const News = ({getNewsThunk, newsItems, newsCounter, isFetching, currentPage}) => {
+    const portionalSize = 10
+    const pageSize = 10
     useEffect(()=>{
-        newsItems.length === 0 && getNewsThunk()
-    },[newsItems,getNewsThunk])
+        newsItems.length === 0 && getNewsThunk('ru', currentPage, pageSize)
+    },[newsItems,getNewsThunk, currentPage])
 
+    const onPageChanged = (p) => {
+        getNewsThunk('ru', p, pageSize)
+    }
+    
     return isFetching
     
     ? <Preloader />
     : <div>
+        <Paginator pageSize={pageSize} portionSize={portionalSize}
+         currentPage={currentPage} itemsTotalCount={newsCounter} onPageChanged={onPageChanged} />
         { newsItems.map(
             
             (n, index) => <div key={index}>
