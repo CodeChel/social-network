@@ -21,7 +21,14 @@ const other = {
     month: 'long',
     year: 'numeric'
 }
-
+const yearNews = {
+  year: 'numeric',
+  day: 'numeric',
+  month: 'short',
+  hour: 'numeric',
+  minute: 'numeric'
+ 
+}
  const formatTime = (date) =>{
 
     if(isToday(date)) return date.toLocaleString("en-US", today)
@@ -50,5 +57,11 @@ const isToday = (date) => {
     else if(isMonth(date)) return date.toLocaleString("en-US", {month: 'short', day: 'numeric'})
     else if(isYear(date)) return date.toLocaleString('en-US', {month: 'short', day: 'numeric'})
     return date.toLocaleString('en-US', other)
+}
+
+export const formatTimeNews = (dateString) =>{
+  const date = new Date(dateString)
+  return date.toLocaleString("en-US", yearNews)
+
 }
   export default formatTime
