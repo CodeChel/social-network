@@ -23,11 +23,11 @@ const Paginator = ({ itemsTotalCount, pageSize, currentPage, onPageChanged, port
         }
         {pages
             .filter(p => p >= leftPortionNumber && p <= rightPortionNumber)
-            .map(p => {
+            .map((p, index) => {
                 const classPage = currentPage === p ? styles.selectedPage + ' ' + styles.items : styles.items
                 return currentPage === p
-                    ? <div role='button' className={classPage}>{p}</div>
-                    : <div role='button' className={classPage}
+                    ? <div key={index} role='button' className={classPage}>{p}</div>
+                    : <div key={index}  role='button' className={classPage}
                         onClick={(e) => {
                             onPageChanged(p)
                         }
