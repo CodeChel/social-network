@@ -37,7 +37,7 @@ const initialState = {
                     ...state,
                     currentPage: action.payload.pageNumber
                 }          
-        default: return state;
+        default: return state
 
     }
 

@@ -1,15 +1,15 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import messagesReducer from './messages-reducer';
-import friendsReducer from './friends-reducer';
-import profileReducer from './profile-reducer';
-import authReducer from './auth-reducer';
-import appReducer from './app-reducer';
-import thunkMiddleware from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware, compose } from "redux"
+import messagesReducer from './messages-reducer'
+import friendsReducer from './friends-reducer'
+import profileReducer from './profile-reducer'
+import authReducer from './auth-reducer'
+import appReducer from './app-reducer'
+import thunkMiddleware from 'redux-thunk'
 import newsReducer from './news-reducer'
 
-import { reducer as formReducer } from 'redux-form';
+import { reducer as formReducer } from 'redux-form'
 
-let reducers = combineReducers({
+const reducers = combineReducers({
     messages: messagesReducer,
     friendsPage: friendsReducer,
     profilePage: profileReducer,
@@ -22,7 +22,7 @@ let reducers = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
- const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+ const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 
 

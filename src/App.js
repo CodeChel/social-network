@@ -37,7 +37,7 @@ class App extends React.Component {
               <SideBar />
               <div className='app-wrapper-content'>
                 <Switch>
-                  <Route exact path={'/'} render={() => <Redirect to={`/profile/${this.props.authId}`} />} />
+                  <Route exact path='/' render={() => <Redirect to={`/profile/${this.props.authId}`} />} />
                   <Route exact path='/profile' render={() => <Redirect to={`/profile/${this.props.authId}`} />} />
                   <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
                   <Route path='/news' component={NewsContainer} />
