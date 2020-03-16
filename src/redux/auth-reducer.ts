@@ -1,5 +1,6 @@
-import { authAPI, securityAPI, profileAPI } from '../API/api';
-import { stopSubmit } from 'redux-form';
+import { actionType, dataTypeLogin, setUserAuthType, resetUserAuthType, setCaptchaURLType, setAvatarType, dataTypeResponse } from './../ts/types';
+import { authAPI, securityAPI, profileAPI } from '../API/api'
+import { stopSubmit } from 'redux-form'
 
 import * as authR from './auth-reducer'
 
@@ -16,13 +17,10 @@ const initialState = {
     captchaURL: null as null | string,
     avatar: null as null | string
 }
-type action = {
-    type: string
-    payload?: Object
-}
 
 
-export const authReducer = (state : typeof initialState = initialState, action: action) => {
+
+export const authReducer = (state = initialState, action: actionType): typeof initialState => {
 
     switch (action.type) {
         case SET_USER:
@@ -50,15 +48,19 @@ export const authReducer = (state : typeof initialState = initialState, action: 
 
 }
 
-export const setUserAuth = (data: Object) => ({ type: SET_USER, payload: { ...data } });
-export const resetUserAuth = () => ({ type: RESET_USER });
-export const setCaptcha = (captchaURL: String) => ({ type: GET_CAPTHCA_SUCCESS, payload: captchaURL })
-export const setAvatar = (avatar: String) => ({ type: SET_AVATAR, payload: { avatar } })
+
+export const setUserAuth = (data: dataTypeLogin): setUserAuthType => ({ type: SET_USER, payload: { ...data } });
+export const resetUserAuth = (): resetUserAuthType => ({ type: RESET_USER });
+export const setCaptcha = (captchaURL: string): setCaptchaURLType => ({ type: GET_CAPTHCA_SUCCESS, payload: captchaURL })
+export const setAvatar = (avatar: string): setAvatarType => ({ type: SET_AVATAR, payload: { avatar } })
+
+
+
 export const getAuthThunk = () => async (dispatch: Function) => {
-    const data = await (authAPI.getAuth())
+    const data: dataTypeResponse = await (authAPI.getAuth())
     if (data.resultCode === 0) {
-        dispatch(setUserAuth(data.data));
-        const response = await profileAPI.getProfile(data.data.id);
+        dispatch(setUserAuth(data.data))
+        const response = await profileAPI.getProfile(data.data.id)
         dispatch(setAvatar(response.data.photos.small))
     }
 }
@@ -86,9 +88,9 @@ export const getCaptcha = () => async (dispatch: Function) => {
 export const logOutThunk = () => async (dispatch: Function) => {
     const data = await (authAPI.logOut())
     if (data.resultCode === 0) {
-        dispatch(resetUserAuth());
+        dispatch(resetUserAuth())
     }
 }
 
 
-export default authReducer;
+export default authReducer

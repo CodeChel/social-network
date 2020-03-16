@@ -1,3 +1,4 @@
+import { userType, actionType } from './../ts/types';
 import { usersAPI } from '../API/api'
 
 
@@ -11,10 +12,19 @@ export const TOGGLE_IS_FOLOWING_PROGRESS = 'friends-reducer/TOGGLE_IS_FOLOWING_P
 export const SET_MESSAGE_MODE = 'friends-reducer/SET_MESSAGE_MODE';
 export const ADD_MORE_USER = 'friends-reducer/ADD_MORE_USER';
 
+type initialStateType = {
+    users: Array <userType>,
+    pageSize: number,
+    totalUsersCout: number,
+    currentPage: number,
+    isFetching: boolean,
+    followingInProgress: Array <number>,
+    messageMode: boolean,
+    messageId: number
+}
 
-const initialState = {
+const initialState : initialStateType = {
     users: [],
-    friends: [],
     pageSize: 30,
     totalUsersCout: 0,
     currentPage: 1,
@@ -24,7 +34,7 @@ const initialState = {
     messageId: 0
 }
 
-export const friendsReducer = (state = initialState, action) => {
+export const friendsReducer = (state = initialState, action : actionType) : initialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -65,7 +75,7 @@ export const friendsReducer = (state = initialState, action) => {
 
 }
 
-export const follow = (id) => ({ type: FOLLOW, payload: id });
+export const follow = (id: number) => ({ type: FOLLOW, payload: id });
 export const unfollow = (id) => ({ type: UNFOLLOW, payload: id });
 export const setUsers = (users) => ({ type: SET_USERS, payload: { users } });
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, payload: currentPage });

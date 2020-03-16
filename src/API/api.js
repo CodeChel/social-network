@@ -19,7 +19,7 @@ export const usersAPI = {
     deleteFollow(id) {
         return instance.delete(`follow/${id}`, {}).then(response => response.data)
     },
-    getFollow(id){
+    getFollow(id) {
         return instance.get(`follow/${id}`, {}).then(response => response.data)
     }
 }
@@ -29,8 +29,10 @@ export const authAPI = {
         return instance.get('auth/me').then(response => response.data)
     },
     logIn(dataForm) {
-        return instance.post('auth/login', { email: dataForm.login, password: dataForm.password,
-             rememberMe: dataForm.rememberMe, captcha: dataForm.captcha })
+        return instance.post('auth/login', {
+            email: dataForm.login, password: dataForm.password,
+            rememberMe: dataForm.rememberMe, captcha: dataForm.captcha
+        })
             .then(response => response.data)
     },
     logOut() {
