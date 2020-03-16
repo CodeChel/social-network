@@ -52,4 +52,4 @@ const User = ({ user, follow, unfollow, followingInProgress, setMessageMode }) =
 
 }
 
-export default User;
+export default User
