@@ -9,6 +9,22 @@ export const IS_SEARCH_MODE = 'messages-reducer/IS_SEARCH_MODE'
 export const SET_USER_FOR_MESSAGE = 'messages-reducer/SET_USER_FOR_MESSAGE'
 export const IS_FETCHING = 'messages-reducer/IS_FETCHING'
 
+type dialogItemType = {
+    name: string,
+    userId: number,
+    avatar: string,
+    messages: Array <dialogItemMessageType>
+}
+
+type dialogItemMessageType = {
+    message: string,
+    id: number,
+    date: number,
+    timeFormat: string
+}
+type initialStateType = {
+    dialogItemsData
+}
 const initialState = {
     dialogItemsData: [
         {
