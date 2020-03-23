@@ -1,3 +1,4 @@
+import { actionType } from './../ts/types';
 import avatar from '../assets/img/ava.jpg'
 import formatTime from '../utils/timeFormat'
 import {  profileAPI } from '../API/api'
@@ -9,23 +10,35 @@ export const IS_SEARCH_MODE = 'messages-reducer/IS_SEARCH_MODE'
 export const SET_USER_FOR_MESSAGE = 'messages-reducer/SET_USER_FOR_MESSAGE'
 export const IS_FETCHING = 'messages-reducer/IS_FETCHING'
 
+type dialogItemMessageType = {
+    message: string
+    id: number
+    date: number
+    timeFormat: string
+    right?: boolean
+}
+
 type dialogItemType = {
-    name: string,
-    userId: number,
-    avatar: string,
+    name: string
+    userId: number
+    avatar: string
     messages: Array <dialogItemMessageType>
 }
 
-type dialogItemMessageType = {
-    message: string,
-    id: number,
-    date: number,
-    timeFormat: string
+type dialogItemsType = Array <dialogItemType>
+type userForMessageType = {
+    user: string,
+    photo: string
 }
+
 type initialStateType = {
-    dialogItemsData
-}
-const initialState = {
+    dialogItemsData: dialogItemsType
+    dialogsFromSearch: null | dialogItemsType
+    isSearchMode: boolean
+    userForMessage: null | string | userForMessageType
+    isFetching: boolean
+}   
+const initialState : initialStateType = {
     dialogItemsData: [
         {
             name: 'Suarez', userId: 5081, avatar: 'https://social-network.samuraijs.com/activecontent/images/users/5081/user-small.jpg?v=13',
@@ -122,7 +135,7 @@ const initialState = {
     isFetching: false
 }
 
-export const messagesReducer = (state = initialState, action) => {
+export const messagesReducer = (state = initialState, action : actionType) : initialStateType => {
 
     switch (action.type) {
         case SEND_MESSAGE:
@@ -163,15 +176,59 @@ export const messagesReducer = (state = initialState, action) => {
     }
 
 }
+type sendMessagePayloadType = {
+    message: string
+    id: number
+    date: number
+    timeFormat: string
+}
+type sendMessageType = {
+    type: typeof SEND_MESSAGE
+    payload: sendMessagePayloadType
+}
 
-export const sendMessage = (message, id) => ({ type: SEND_MESSAGE, payload:{message, id, date: Date.now(),  timeFormat: formatTime(new Date())  } });
-export const setNewDialog = (message, userId, photo, name) => ({ type: SET_NEW_DIALOG, payload: {userId, photo, name, message, date: Date.now(), timeFormat: formatTime(new Date())} })
-export const setIsFetching = (isFetching) => ({type: IS_FETCHING, payload: isFetching})
-export const setSearch = (word) => ({type: SEARCH_DIALOG, payload: {word}})
-export const setSearchMode = (isMode) => ({type: IS_SEARCH_MODE, payload: isMode})
-export const setUserForMessages = (photo,name) => ({type: SET_USER_FOR_MESSAGE, payload: name ? { photo, name} : null})
+type setNewDialogPayload = {
+    message: string
+    userId: number
+    date: number
+    timeFormat: string
+    name: string
+    photo: string
+}
+type setNewDialogType = {
+    type: typeof SET_NEW_DIALOG
+    payload: setNewDialogPayload
+}
+type setIsFetchingType = {
+    type: typeof IS_FETCHING
+    payload: boolean
+}
+type setSearchType = {
+    type: typeof SEARCH_DIALOG
+    payload: { 
+        word: string
+    }
+}
+type setSearchModeType = {
+    type: typeof IS_SEARCH_MODE
+    payload: boolean
+}
+type setUserForMessagesType = {
+    type: typeof SET_USER_FOR_MESSAGE
+    payload: null | {
+        photo: string 
+        name: string
+    }
+}
 
-export const messageFromPopUp = (data, user) => (dispatch, getState) => {
+export const sendMessage = (message: string, id: number) : sendMessageType => ({ type: SEND_MESSAGE, payload:{message, id, date: Date.now(),  timeFormat: formatTime(new Date())  } });
+export const setNewDialog = (message: string, userId: number, photo: string, name: string) : setNewDialogType => ({ type: SET_NEW_DIALOG, payload: {userId, photo, name, message, date: Date.now(), timeFormat: formatTime(new Date())} })
+export const setIsFetching = (isFetching: boolean) : setIsFetchingType => ({type: IS_FETCHING, payload: isFetching})
+export const setSearch = (word: string) : setSearchType => ({type: SEARCH_DIALOG, payload: {word}})
+export const setSearchMode = (isMode: boolean) : setSearchModeType => ({type: IS_SEARCH_MODE, payload: isMode})
+export const setUserForMessages = (photo: string, name: string) : setUserForMessagesType => ({type: SET_USER_FOR_MESSAGE, payload: name ? { photo, name} : null})
+
+export const messageFromPopUp = (data, user) => (dispatch: Function, getState: Function) => {
 
     const userId = user.id || user.userId;
     const photo = user.photos.small;
